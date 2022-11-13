@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController extends UserBaseController {
 
     @PostMapping
-    @Operation(description = "Создать компанию")
+    @Operation(description = "Создать пользователя")
     public ResponseEntity<?> createUser(@RequestBody UserRequest user) {
         try {
             return ResponseEntity.ok(userService.createUser(user));
