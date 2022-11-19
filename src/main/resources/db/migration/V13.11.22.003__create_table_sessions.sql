@@ -1,0 +1,14 @@
+CREATE TABLE sessions
+(
+    uuid       VARCHAR(36) NOT NULL,
+    user_uuid  VARCHAR(36),
+    start      TIMESTAMP WITHOUT TIME ZONE,
+    expiration TIMESTAMP WITHOUT TIME ZONE,
+    CONSTRAINT pk_sessions PRIMARY KEY (uuid)
+);
+
+ALTER TABLE sessions
+    ADD CONSTRAINT UC_SESSIONS_UUID UNIQUE (uuid);
+
+ALTER TABLE sessions
+    ADD CONSTRAINT FK_SESSIONS_ON_USER_UUID FOREIGN KEY (user_uuid) REFERENCES users (uuid);
